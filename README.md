@@ -1,4 +1,4 @@
-# Hardening - Ubuntu24
+# Hardening - Ubuntu 24.04.3
 
 ---
 
