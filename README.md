@@ -1,9 +1,9 @@
-# Hardening - Ubuntu 24.04.3 (WORK IN PROGRESS)
+# Hardening - Ubuntu Desktop 24.04.3 (WORK IN PROGRESS)
 
 ---
 
 ## Overview
-The aim of this project is to harden two Ubuntu virtual machines, one desktop and one server, and to catalogue all implemented hardening measures in order to study their effects and the trade-offs they introduce to the system.\
+The aim of this project is to harden a Ubuntu Desktop 24.04.3 virtual machine, and to catalogue all implemented hardening measures in order to study their effects and the trade-offs they introduce to the system.\
 The progression is going to be slow, as I add more and more hardening measures as I study and test them. They will only be added once I am confident about all their details.
 Over time, I will also add automation and auditing tools to ensure compliance with benchmarks.
 
