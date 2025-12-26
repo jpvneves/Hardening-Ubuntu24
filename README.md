@@ -10,7 +10,6 @@ Over time, I will also add automation and auditing tools to ensure compliance wi
 ---
 
 ## 1. Update the System
-
 Keeping the system properly updated is the first thing anyone should do to ensure security.\
 Every system has vulnerabilities, and outdated packages allow a malicious attacker to exploit those vulnerabilities to compromise the system. Keeping the system updated with the latest packages helps reduce risk and prevent exploitation.\
 To ensure that you have the latest packages at all times, it is important to enable automatic security updates.
@@ -22,6 +21,21 @@ sudo apt install unattended-upgrades       # Installs the tool that automaticall
 sudo dpkg-reconfigure unattended-upgrades  # Launches a configuration dialog to enable or adjust automatic updates.
 sudo apt autoremove                        # Removes packages that were installed as dependencies but are no longer needed.
 sudo apt clean                             # Clears the local cache of downloaded package files.
+```
+
+---
+
+## 2. Enable firewall (UFW)
+Ubuntu comes with its own Uncomplicated Firewall (UFW).\
+It controls network traffic to and from your computer, serving as a barrier between your system and the network.\
+UFW simplifies firewall management by using straightforward terminal commands.
+Enabling it reduces the attack surface by blocking unsolicited inbound traffic and protecting against network-based attacks.
+
+```bash
+sudo ufw default deny incoming   # Blocks all unsolicited inbound connections by default
+sudo ufw default allow outgoing  # Allows normal desktop activity
+sudo ufw enable                  # Activates firewall
+sudo ufw status                  # Verifies firewall rules
 ```
 
 ---
