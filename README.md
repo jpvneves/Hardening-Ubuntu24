@@ -48,11 +48,7 @@ Profiles are defined per application, not per user, and consist of rules that sp
 - **Complain mode** allows violations but logs them for review.
 AppArmor is enabled by default on some Linux distributions, such as Ubuntu.
 
-Check if it's running:
 ```bash
-sudo aa-status
-```
-If it's not:
-```bash
-sudo systemctl enable apparmor --now
+sudo aa-status                        # Check if it's running
+sudo systemctl enable apparmor --now  # If it's not running activate it
 ```
