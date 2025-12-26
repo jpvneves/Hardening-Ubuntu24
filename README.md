@@ -52,3 +52,38 @@ AppArmor is enabled by default on some Linux distributions, such as Ubuntu.
 sudo aa-status                        # Check if it's running
 sudo systemctl enable apparmor --now  # If it's not running activate it
 ```
+
+---
+
+## 4. Remove Unnecessary Services
+Linux comes with multiple different services enabled by default, many are important and needed for normal use.\
+Not all of them are needed and the more you have the larger the attack surface of your system.\
+It's important then, to disable any service you know you won't need or use or that doesn't have dependencies that are important.
+
+```bash
+systemctl list-unit-files --type=service | grep enabled  # List all the enabled services
+systemctl cat (service name)                             # See what the service does
+systemctl list-dependencies (service name)               # List all the dependencies of the service
+sudo systemctl disable --now (service name)              # Disable the service
+sudo apt purge (service name)                            # After a few days of use without the service, purge it if you want
+```
+List of services that can me safely disabled (always check):
+```bash
+avahi-daemon               # Local network discovery (mDNS / Bonjour, AirPlay, network printers)
+avahi-daemon.socket        # Socket activation for avahi-daemon
+cups                       # Printing system
+cups-browsed               # Automatically discovers network printers
+cups.path                  # Watches printer config paths
+cups.socket                # Socket activation for CUPS
+saned                      # Scanner daemon (SANE backend)
+bluetooth                  # Bluetooth device support (headsets, keyboards, mice)
+ModemManager               # Mobile broadband (3G/4G/5G USB modems)
+whoopsie                   # Sends crash reports to Ubuntu
+apport                     # Collects crash and error reports
+gnome-remote-desktop       # GNOME screen sharing (RDP / VNC)
+rpcbind                    # RPC port mapping (used by legacy NFS and some network services)
+rpcbind.socket             # Socket activation for rpcbind
+pcscd                      # Smart card reader support
+NetworkManager-wait-online # Delays boot until network is fully online (mainly for servers)
+```
+
