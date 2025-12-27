@@ -12,8 +12,7 @@ Given the scale and complexity of security hardening, and the fact that I only d
 
 | Operating Systems | Version | Status |
 | ----------------- | ------- | ------ |
-| Ubuntu Desktop |  24.04.3 | In Progress |
-| Ubuntu Server |  24.04.3 | Planning Stages |
+| Ubuntu | 24.04.3 | In Progress |
 
 ---
 
