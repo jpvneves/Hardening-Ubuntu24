@@ -90,11 +90,11 @@ sudo visudo                                                                     
 - Add: Defaults timestamp_timeout=(forget password minutes)                              # Forgets sudo password after some minutes
 - Add: Defaults logfile="/var/log/sudo.log"                                              # Create a log file for sudo command usage
 getent group sudo                                                                        # Ensure only trusted users belong to sudo group
+sudo apt install libpam-tmpdir                                                           # Prevents users from accessing each other’s temporary files
 sudo nano /etc/pam.d/common-auth                                                         # Edit PAM configuration
 - Add: auth required pam_faillock.so preauth silent deny=(amount) unlock_time=(seconds)  # If account is already locked after 5 attempts lock for 15 minutes
 - Add: auth [default=die] pam_faillock.so authfail deny=(amount) unlock_time=(seconds)   # Faillock on failure
 - Add: auth sufficient pam_faillock.so authsucc deny=5 unlock_time=900                   # faillock on success
-sudo apt install libpam-tmpdir                                                           # Prevents users from accessing each other’s temporary files
 gsettings set org.gnome.desktop.session idle-delay (seconds)                             # How long the system can be idle before lockout  
 gsettings set org.gnome.desktop.screensaver lock-enabled true                            # Force the screen to lock when the screensaver activates
 ```
