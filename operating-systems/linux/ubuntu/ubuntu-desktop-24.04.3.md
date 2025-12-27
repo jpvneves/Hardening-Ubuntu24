@@ -74,12 +74,36 @@ sudo apt purge (service name)                            # After a few days of u
 ---
 
 ## 5. Secure User Accounts
-TODO
+One of the largest attack surfaces of your system is the user accounts.\
+If an attacker was able to get inside your user account they would be able to do anything that user can do as well as access all the user's files and use even root via sudo.\
+In order to secure your user accounts you need:
+- Strong authentication
+- Minimal user accounts
+- Hardened sudo and root access
+- Account lockout
+- Session and screen protection
+
+```bash
+passwd                                                        # Change password to a stronger one
+sudo passwd -l root                                           # Locks root account
+sudo apt install libpam-tmpdir                                # Prevents users from accessing other users tmp folder
+sudo faillog -m (max failed attempts) -l (lockout seconds)    # Change parameters for failed login attempts
+sudo visudo                                                   # Harden sudo
+Add: Defaults timestamp_timeout=(forget password minutes)     # Forgets sudo password after some minutes
+Add: Defaults logfile="/var/log/sudo.log"                     # Create log file of sudo command uses
+```
 
 ---
 
 ## 6. Disk Encryption
-TODO
+Not all attacks are cyber attacks.\
+Your computer might get stolen, so it's important to ensure that if that happens, your data is safely secured.\
+Disk Encryption converts all the data on your disk to unreadable ciphertext. This makes it so that only someone that has the correct decryption key can get decrypt the data.
+
+It is recommended to encrypt the disk during the Ubuntu installation by using:
+- **LUKS (Linux Unified Key Setup)**: It uses strong cryptography (AES-XTS) to encrypt you disk.
+
+While it is possible to encrypt the disk post-installation it is generaly not recommended.
 
 ---
 
